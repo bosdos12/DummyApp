@@ -7,7 +7,7 @@ import datetime
 from bson.objectid import ObjectId
 
 # connecting to our database
-app_cluster = MongoClient("mongodb+srv://adakadmin1:wellwell112211@mytkintersocialmediaapp.etvww.mongodb.net/MyTkinterSocialMediaAppCluster?retryWrites=true&w=majority")
+app_cluster = MongoClient("")
 app_db = app_cluster["mainappdb"]
 user_data_collection = app_db["UserData"]
 
