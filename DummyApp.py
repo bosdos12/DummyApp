@@ -26,11 +26,9 @@ usedinloginusername = ""
 usedinloginpassword = ""
 # the searched usersname for accesing it from db
 g_searchedusername = ""
-
 # ==================================================================================================
 
-
-# Multy Page Function
+# Multi Page Function
 class tkinterApp(tk.Tk):
     def __init__(self, *args, **kwargs):
         tk.Tk.__init__(self, *args, **kwargs)
@@ -91,7 +89,6 @@ class LoginPage(tk.Frame):
         def gotosigninpagef():
             controller.show_frame(SignUpPage)
 
-
         ''' Messing With The Views '''
         def viewpasswordf():
             passwordentry.config(show="")
@@ -100,7 +97,6 @@ class LoginPage(tk.Frame):
         def dontviewpasswordf():
             passwordentry.config(show="*")
             viewpassbtn.config(command=lambda: viewpasswordf(), text="View Password")
-
 
         """ -- LoginPage Design"""
         # The Header Text
@@ -139,7 +135,6 @@ class LoginPage(tk.Frame):
         tk.Label(self, text="Dont have an account? SignUp with this button --> ", font=largefont, bg="lightgray").place(x=10, y=490)
         gotosignuppagebutton = tk.Button(self, text="Signup", font=largefont, width=8, height=1, fg="darkblue", command=lambda: gotosigninpagef())
         gotosignuppagebutton.place(x=364, y=487)
-
 
 #====================================================================================
 #====================================================================================
@@ -252,7 +247,6 @@ class SignUpPage(tk.Frame):
                                                 signup_passwordentry.delete(0, 'end')
                                                 signup_passwordconfirmationentry.delete(0, 'end')
 
-
                                             else:
                                                 tk.messagebox.showerror("Error",
                                                                         "Account Can't be Created as the Username is Already in Use in Another Account")
@@ -273,8 +267,6 @@ class SignUpPage(tk.Frame):
                         tk.messagebox.showerror("Error", "The Username Has to Be at Least 8 Characters Long")
                 else:
                     tk.messagebox.showerror("Error", "Invalid Email")
-
-
 
         """ -- SignUpPage Page Design"""
         # The Frame for the box of the page
@@ -321,7 +313,6 @@ class SignUpPage(tk.Frame):
         readlicenseagreementbutton = tk.Button(self, text="Read The License Agreement", fg="blue", command=lambda: readthelicenseagreementf())
         readlicenseagreementbutton.place(x=260, y=438)
 
-
         # Sign Up Button
         signupbutton = tk.Button(self, text="SIGNUP", bg="gray", fg="aqua", font=largefont, width=12, height=3, command=lambda: signupf())
         signupbutton.place(x=165, y=490)
@@ -329,7 +320,6 @@ class SignUpPage(tk.Frame):
         # Go To HomePage From Signup Button
         gotohomepgefromsignupbtn = tk.Button(self, text="Go to Login Page", bg="gray", fg="aqua", font=largefont, width=14, height=2, command=lambda: controller.show_frame(LoginPage))
         gotohomepgefromsignupbtn.place(x=312, y=548)
-
 
 #====================================================================================
 #====================================================================================
@@ -367,9 +357,6 @@ class HomePage(tk.Frame):
                 # sending the user to the searched user page
                 controller.show_frame(SearchedUserPage)
 
-
-
-
         # checking for the data on the database // more info on "Line 366"
         def refreshhpf():
             """ The Actual HomePage Code -- Post Refresh"""
@@ -396,7 +383,6 @@ class HomePage(tk.Frame):
 
             # calculating their current age
             curuserage = (int(now.year) - int(curuserbirthyear))
-
 
             # function for going to the messages page
             def gotomessages():
@@ -431,7 +417,6 @@ class HomePage(tk.Frame):
                         tk.messagebox.showerror("ERROR", "THE BIO SHOULD BE LESS THAN 250 CHARACTERS LONG \nWHILE "
                                                          "YOUR BIO IS " + str(len(thetexttoinserttobio))) + "CHARACTERS LONG"
 
-
                 # ============================
                 '''  EDIT BIO WINDOW DESIGN  '''
                 tk.Label(writebiowindow, text="Edit Your Bio Below\n Max length = 250", bg="lightgray", font=largefont)\
@@ -449,8 +434,6 @@ class HomePage(tk.Frame):
 
 
                 writebiowindow.mainloop()
-
-
 
             '''   ==========================================   '''
             '''   ==========================================   '''
@@ -501,10 +484,7 @@ class HomePage(tk.Frame):
 
             # cancel bio edit
 
-
-
         """ HomePage -- Page Design -- Pre Refresh/Start"""
-
         '''  The external user search place  '''
         # search place frame
         externalusersearchframe = tk.Frame(self, padx=183, pady=25, highlightbackground="black", highlightthickness=2, bg="lightgray")
@@ -534,18 +514,11 @@ class HomePage(tk.Frame):
             .pack()
         userdataframe.place(x=18, y=130)
         # the user data info to place now (finaly)
-        # ==========================================================
-        # || THE REFRESH BUTTON FIX IS ONLY FOR BEING USED DURING ||
-        # || THE DEVELOPMENT PROCCESS, AFTER THE DEV PROCCES ENDS ||
-        # || YOU NEED TO FIND SOME OTHER FIXES.. FIX IDEAS:       ||
-        # || CALLING THE LABLES FROM OTHER PAGES ETC....          ||
-        # ||         ---------NVM SHITS DONE AYE---------         ||
-        # ==========================================================
+        
         # refresh button for both refreshing and starting the page
         refreshbutton = tk.Button(self, text="Refresh", bg="aqua", width=8, heigh=1, command=lambda: refreshhpf())
         refreshbutton.place(x=365, y=85)
         tk.Label(self, text="PAGE NOT LOADED, PLEASE REFRESH!", font=largefont).place(x=65, y=300)
-
 
 #====================================================================================
 #====================================================================================
@@ -731,13 +704,7 @@ class SearchedUserPage(tk.Frame):
                     else:
                         add_remove_friendbutton.config(text="Remove Friend", bg="red", fg="aqua")
 
-
-
                 # TODO =================================================================
-
-
-
-
 
             ''' SEARCHING FOR USERS ON THE SEARCHED USER PAGE AYY '''
             def searchusersf():
@@ -747,9 +714,6 @@ class SearchedUserPage(tk.Frame):
                     controller.show_frame(HomePage)
                     global g_searchedusername
                     g_searchedusername = ""
-
-
-
 
                 global usedinloginusername
                 global g_searchedusername
@@ -867,8 +831,6 @@ class SearchedUserPage(tk.Frame):
                 addfriendbuttonbgcolor = "red"
                 addfriendbuttonfgcolor = "aqua"
 
-
-
             # Add friend/unfriendbutton
             add_remove_friendbutton = tk.Button(self, text=str(addfriendbuttontext), bg=str(addfriendbuttonbgcolor), fg=str(addfriendbuttonfgcolor),
                                                 font=largefont, width=15, height=2, command=lambda: addfriendf())
@@ -877,7 +839,6 @@ class SearchedUserPage(tk.Frame):
 
             '''======================================================================================================='''
             '''======================================================================================================='''
-
 
             # Bio Location
             thebiotext = tk.Text(self, width=35, height=7, font=("helvetica", 15))
@@ -919,7 +880,6 @@ class SearchedUserPage(tk.Frame):
                                   command=lambda: gotohomepagef())
 
             gotohpbtn.place(x=0, y=550)
-
 
         """ SearchedUserPage Pre View -- Page Design"""
         # user found place frame
@@ -983,7 +943,6 @@ class SettingsPage(tk.Frame):
         tk.Label(self, text="SETTINGS", width=20, height=3, font=largefont, bg="gray", fg="white")\
             .place(x=140, y=50)
 
-
         # the logout Button
         logoutbutton = tk.Button(self, text="Logout", width=16, height=3, bg="gray", fg="blue", command=lambda: logoutf())
         logoutbutton.place(x=175, y=120)
@@ -993,7 +952,6 @@ class SettingsPage(tk.Frame):
                               font=largefont,
                               command=lambda: controller.show_frame(HomePage))
         gotohpbtn.place(x=0, y=550)
-        
         
 app = tkinterApp()
 app.mainloop()
